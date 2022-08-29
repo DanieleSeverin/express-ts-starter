@@ -14,18 +14,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const jwt_1 = require("./jwt");
+const uuid_1 = require("uuid");
 const router = express_1.default.Router();
 router.post('/', function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log("Login Request");
+        console.log("Signup Request");
+        const id = (0, uuid_1.v4)();
         const response = {
             User: {
-                id: "1",
+                id: id,
                 name: "John Doe",
                 email: "boh"
             },
-            AccessToken: (0, jwt_1.generateAccessToken)("1"),
-            RefreshToken: (0, jwt_1.generateRefreshToken)("1")
+            AccessToken: (0, jwt_1.generateAccessToken)(id),
+            RefreshToken: (0, jwt_1.generateRefreshToken)(id)
         };
         res.send(response);
     });

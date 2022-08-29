@@ -1,5 +1,6 @@
 import { NextFunction } from "express";
-import { RequestWithUser, User } from "./RequestWithUser";
+import { User } from "../models/Auth";
+import { RequestWithUser } from "./RequestWithUser";
 
 module.exports = function setCurrentUser(req: RequestWithUser, res: Response, next: NextFunction) {
   const token = req.headers.get("authorization");

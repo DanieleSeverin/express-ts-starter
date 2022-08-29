@@ -10,6 +10,13 @@ export function generateAccessToken(uuid: string) {
         {expiresIn: '3600s'});
   }
 
+export function generateRefreshToken(uuid: string) {
+    return jwt.sign(
+        {id: uuid},
+        process.env.REFRESH_TOKEN_SECRET,
+        {expiresIn: '1h'});
+  }
+
 export function authenticateToken(req: RequestWithUser, res: Response, next: NextFunction) {
     const authHeader = req.headers.get('authorization')
     const token = authHeader && authHeader.split(' ')[1]

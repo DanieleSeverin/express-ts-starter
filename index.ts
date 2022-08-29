@@ -7,10 +7,12 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT;
 var login = require('./auth/login');
+var signup = require('./auth/signup');
 
 app.use(cors())
 
 app.use('/api/login', login);
+app.use('/api/signup', signup);
 
 app.all('/', (req: Request, res: Response) => {
   res.send('No route match.');

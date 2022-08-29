@@ -10,10 +10,12 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
 var login = require('./auth/login');
+var signup = require('./auth/signup');
 app.use((0, cors_1.default)());
 app.use('/api/login', login);
-app.get('/', (req, res) => {
-    res.send('Express + TypeScript Server is running');
+app.use('/api/signup', signup);
+app.all('/', (req, res) => {
+    res.send('No route match.');
 });
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
