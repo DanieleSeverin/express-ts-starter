@@ -9,7 +9,13 @@ const port = process.env.PORT;
 var login = require('./auth/login');
 var signup = require('./auth/signup');
 
+//Parser
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
+
 app.use(cors())
+
+app.use(jsonParser);
 
 app.use('/api/login', login);
 app.use('/api/signup', signup);

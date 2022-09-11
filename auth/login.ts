@@ -6,13 +6,13 @@ const router = express.Router();
 router.post('/', async function(req, res) {
     console.log("Login Request");
     const response :LoginResponse = {
-        User: {
+        user: {
             id: "1",
             name: "John Doe",
             email: "boh"
         },
-        AccessToken: generateAccessToken("1"),
-        RefreshToken: generateRefreshToken("1")
+        accessToken: generateAccessToken("1"),
+        refreshToken: generateRefreshToken("1")
     } 
     res.send(response);
 });

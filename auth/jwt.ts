@@ -28,7 +28,7 @@ export function authenticateToken(req: RequestWithUser, res: Response, next: Nex
   
       if (err) return res.sendStatus(403)
   
-      req.User = user
+      req.user = user
   
       next()
     })

@@ -11,7 +11,11 @@ const app = (0, express_1.default)();
 const port = process.env.PORT;
 var login = require('./auth/login');
 var signup = require('./auth/signup');
+//Parser
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 app.use((0, cors_1.default)());
+app.use(jsonParser);
 app.use('/api/login', login);
 app.use('/api/signup', signup);
 app.all('/', (req, res) => {

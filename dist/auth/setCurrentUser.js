@@ -6,7 +6,7 @@ module.exports = function setCurrentUser(req, res, next) {
         // look up the user based on the token
         const user = getUserFromToken(token).then((user) => {
             // append the user object the the request object
-            req.User = user;
+            req.user = user;
             // call next middleware in the stack
             next();
         });
@@ -16,7 +16,7 @@ module.exports = function setCurrentUser(req, res, next) {
 };
 function getUserFromToken(token) {
     return Promise.resolve({
-        id: 1,
+        id: "1",
         name: "John Doe",
         email: ""
     });

@@ -12,22 +12,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const jwt_1 = require("./jwt");
-const router = express_1.default.Router();
-router.post('/', function (req, res) {
+exports.genericLogs = void 0;
+const promises_1 = __importDefault(require("fs/promises"));
+function genericLogs(title, content) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log("Login Request");
-        const response = {
-            user: {
-                id: "1",
-                name: "John Doe",
-                email: "boh"
-            },
-            accessToken: (0, jwt_1.generateAccessToken)("1"),
-            refreshToken: (0, jwt_1.generateRefreshToken)("1")
-        };
-        res.send(response);
+        try {
+            yield promises_1.default.writeFile(`./logger/logs/${title}.txt`, content);
+        }
+        catch (err) {
+            console.log(err);
+        }
     });
-});
-module.exports = router;
+}
+exports.genericLogs = genericLogs;
